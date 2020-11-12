@@ -32,7 +32,7 @@
                 android:layout_height="44dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="2dp"
-                app:layout_constraintEnd_toStartOf="@+id/spinner"
+                app:layout_constraintEnd_toStartOf="@+id/motorType"
                 app:layout_constraintTop_toBottomOf="@+id/imageView7"
                 app:srcCompat="@drawable/motor" />
 
@@ -87,13 +87,13 @@
                 app:srcCompat="@drawable/iconmarca" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/saveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
                 android:text="GUARDAR"
-                app:layout_constraintEnd_toStartOf="@+id/button3"
+                app:layout_constraintEnd_toStartOf="@+id/cancelButton"
                 app:layout_constraintTop_toBottomOf="@+id/reprogramable" />
 
             <Button
@@ -116,7 +116,7 @@
                 android:inputType="date"
                 android:text="Fecha Lanzamiento"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner" />
+                app:layout_constraintTop_toBottomOf="@+id/motorType" />
 
             <ImageView
                 android:id="@+id/imagen"
@@ -189,7 +189,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/button" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/motorType"
                 android:layout_width="211dp"
                 android:layout_height="37dp"
                 android:layout_marginTop="24dp"
@@ -198,7 +198,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/descripcion" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/cancelButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -206,6 +206,7 @@
                 android:text="ELIMINAR"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/reprogramable" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
