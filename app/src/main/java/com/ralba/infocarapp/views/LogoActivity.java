@@ -1,15 +1,11 @@
-package com.ralba.infocarapp;
+package com.ralba.infocarapp.views;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.ralba.infocarapp.R;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
 
 import java.util.Timer;
 import java.util.TimerTask;
