@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InfoCarApp">
         <activity
+            android:name=".FormActivity"
+            android:label="@string/title_activity_form"
+            android:theme="@style/Theme.InfoCarApp.NoActionBar"></activity>
+        <activity
+            android:name=".LogoActivity"
+            android:label="@string/title_activity_logo"
+            android:theme="@style/Theme.InfoCarApp.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.InfoCarApp.NoActionBar">
