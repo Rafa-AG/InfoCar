@@ -16,7 +16,7 @@ public class LogoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logo);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         new Timer().schedule(new TimerTask() {
             @Override
