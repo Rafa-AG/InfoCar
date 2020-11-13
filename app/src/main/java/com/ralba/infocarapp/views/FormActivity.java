@@ -35,7 +35,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setTitle("Formulario");
+            getSupportActionBar().setTitle("Añadir Vehículo");
             toolbar.setNavigationOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
