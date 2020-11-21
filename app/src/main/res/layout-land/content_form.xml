@@ -22,8 +22,8 @@
                 android:layout_height="32dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="1dp"
-                app:layout_constraintEnd_toStartOf="@+id/reprogramable"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+                app:layout_constraintEnd_toStartOf="@+id/reprogrammable"
+                app:layout_constraintTop_toBottomOf="@+id/release_date"
                 app:srcCompat="@drawable/change" />
 
             <ImageView
@@ -32,7 +32,7 @@
                 android:layout_height="44dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="2dp"
-                app:layout_constraintEnd_toStartOf="@+id/motorType"
+                app:layout_constraintEnd_toStartOf="@+id/motor_type"
                 app:layout_constraintTop_toBottomOf="@+id/imageView7"
                 app:srcCompat="@drawable/motor" />
 
@@ -42,7 +42,7 @@
                 android:layout_height="45dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="4dp"
-                app:layout_constraintEnd_toStartOf="@+id/editTextDate"
+                app:layout_constraintEnd_toStartOf="@+id/release_date"
                 app:layout_constraintTop_toBottomOf="@+id/imageView9"
                 app:srcCompat="@drawable/calendario" />
 
@@ -52,7 +52,7 @@
                 android:layout_height="42dp"
                 android:layout_marginTop="23dp"
                 android:layout_marginEnd="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/descripcion"
+                app:layout_constraintEnd_toStartOf="@+id/car_description"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6"
                 app:srcCompat="@drawable/descripcion" />
 
@@ -72,7 +72,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="26dp"
                 android:layout_marginEnd="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/modelo"
+                app:layout_constraintEnd_toStartOf="@+id/car_model"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2"
                 app:srcCompat="@drawable/modelocoche" />
 
@@ -82,7 +82,7 @@
                 android:layout_height="38dp"
                 android:layout_marginTop="64dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/marca"
+                app:layout_constraintEnd_toStartOf="@+id/car_brand"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/iconmarca" />
 
@@ -95,10 +95,10 @@
                 android:backgroundTint="@color/ic_launcher_background"
                 android:text="GUARDAR"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button" />
+                app:layout_constraintTop_toBottomOf="@+id/cleanButton" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/cleanButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="125dp"
@@ -109,7 +109,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imagen" />
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/release_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -118,7 +118,7 @@
                 android:inputType="date"
                 android:text="Fecha Lanzamiento"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/motorType" />
+                app:layout_constraintTop_toBottomOf="@+id/motor_type" />
 
             <ImageView
                 android:id="@+id/imagen"
@@ -126,23 +126,24 @@
                 android:layout_height="199dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="48dp"
-                android:contentDescription="imagen"
+                android:contentDescription="image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_landscape"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <Switch
-                android:id="@+id/reprogramable"
+                android:id="@+id/reprogrammable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="132dp"
                 android:text="Reprogramable"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+                app:layout_constraintTop_toBottomOf="@+id/release_date" />
 
             <EditText
-                android:id="@+id/descripcion"
+                android:id="@+id/car_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -150,7 +151,7 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
-                android:text="Descripción"
+                android:text="@string/car_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/CV" />
 
@@ -164,10 +165,10 @@
                 android:inputType="number"
                 android:text="CV"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/modelo" />
+                app:layout_constraintTop_toBottomOf="@+id/car_model" />
 
             <EditText
-                android:id="@+id/modelo"
+                android:id="@+id/car_model"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -176,10 +177,10 @@
                 android:inputType="textPersonName"
                 android:text="Modelo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/marca" />
+                app:layout_constraintTop_toBottomOf="@+id/car_brand" />
 
             <EditText
-                android:id="@+id/marca"
+                android:id="@+id/car_brand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="57dp"
@@ -191,13 +192,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Spinner
-                android:id="@+id/motorType"
+                android:id="@+id/motor_type"
                 android:layout_width="211dp"
                 android:layout_height="37dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descripcion" />
+                app:layout_constraintTop_toBottomOf="@+id/car_description" />
 
             <Button
                 android:id="@+id/cancelButton"
@@ -208,7 +209,7 @@
                 android:backgroundTint="#B81414"
                 android:text="ELIMINAR"
                 app:layout_constraintStart_toEndOf="@+id/saveButton"
-                app:layout_constraintTop_toBottomOf="@+id/button" />
+                app:layout_constraintTop_toBottomOf="@+id/cleanButton" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

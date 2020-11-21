@@ -2,10 +2,11 @@ package com.ralba.infocarapp.views;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.ralba.infocarapp.R;
 import com.ralba.infocarapp.interfaces.FormInterface;
+import com.ralba.infocarapp.models.CarEntity;
 import com.ralba.infocarapp.presenters.FormPresenter;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,13 +16,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class FormActivity extends AppCompatActivity implements FormInterface.View {
 
     private FormInterface.Presenter presenter;
+
+    private TextInputEditText brandET;
+    private TextInputLayout brandTIL;
+    private CarEntity car;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setTitle("Añadir Vehículo");
+            getSupportActionBar().setTitle(R.string.add_vehicle);
             toolbar.setNavigationOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -44,8 +48,8 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             });
         }
 
-        Spinner spinner = (Spinner) findViewById(R.id.motorType);
-        String[] type = {"Tipo de Motor", "Gasolina", "Diésel", "Eléctrico", "Híbrido"};
+        Spinner spinner = (Spinner) findViewById(R.id.motor_type);
+        String[] type = {getResources().getString(R.string.motor_type), getResources().getString(R.string.gasoline), getResources().getString(R.string.gasoil), getResources().getString(R.string.electric), getResources().getString(R.string.hybrid)};
         spinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, type));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
@@ -77,6 +81,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                 presenter.onClickCancel();
             }
         });
+
     }
 
     @Override

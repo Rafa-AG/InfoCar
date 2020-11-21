@@ -12,7 +12,12 @@ public class ListPresenter implements ListInterface.Presenter{
 
     @Override
     public void onClickAddCar() {
-        view.starFormActivity();
+        view.startFormActivity();
+    }
+
+    @Override
+    public void onClickFloatingButton() {
+
     }
 
 }

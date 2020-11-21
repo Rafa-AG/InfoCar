@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">InfoCarApp</string>
     <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -11,4 +12,31 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_logo">LogoActivity</string>
     <string name="title_activity_form">FormActivity</string>
+    <string name="results">915616651 results found</string>
+    <string name="guardar">GUARDAR</string>
+    <string name="clean">Limpiar</string>
+    <string name="launchDate">Fecha Lanzamiento</string>
+    <string name="todo">TODO</string>
+    <string name="reprogramable">Reprogramable</string>
+    <string name="car_description">Descripción</string>
+    <string name="cv">CV</string>
+    <string name="eliminar">ELIMINAR</string>
+    <string name="add_vehicle">Añadir Vehículo</string>
+    <string name="search">Search</string>
+    <string name="sort">Ordenar</string>
+    <string name="configuration">Configuración</string>
+    <string name="help">Ayuda</string>
+    <string name="about_us">About us...</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="app_description">InfoCar es una aplicación dedicada a la información de vehículos.</string>
+    <string name="version">Versión 0.2</string>
+    <string name="developer_by">Desarrollada por: <br/> Rafael Alba González</string>
+    <string name="contact_us">Contáctanos en: <br/> infocarapp@example.com</string>
+    <string name="gasoline">Gasolina</string>
+    <string name="gasoil">Diésel</string>
+    <string name="hybrid">Híbrido</string>
+    <string name="electric">Eléctrico</string>
+    <string name="motor_type">Tipo de Motor</string>
+    <string name="brand">Marca</string>
+    <string name="model">Modelo</string>
 </resources>

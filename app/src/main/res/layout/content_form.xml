@@ -20,76 +20,75 @@
                 android:id="@+id/imageView10"
                 android:layout_width="33dp"
                 android:layout_height="32dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="1dp"
                 android:background="#FFFFFF"
-                app:layout_constraintEnd_toStartOf="@+id/reprogramable"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+                app:layout_constraintEnd_toStartOf="@+id/reprogrammable"
+                app:layout_constraintTop_toBottomOf="@+id/imageView8"
                 app:srcCompat="@drawable/change" />
 
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="49dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="17dp"
-                android:layout_marginEnd="2dp"
+                android:layout_width="54dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
                 android:background="#FFFFFF"
-                app:layout_constraintEnd_toStartOf="@+id/motorType"
+                app:layout_constraintEnd_toStartOf="@+id/motor_type"
                 app:layout_constraintTop_toBottomOf="@+id/imageView7"
                 app:srcCompat="@drawable/motor" />
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="50dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="4dp"
-                app:layout_constraintEnd_toStartOf="@+id/editTextDate"
+                android:layout_width="64dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toStartOf="@+id/car_launchdateTIL"
                 app:layout_constraintTop_toBottomOf="@+id/imageView9"
                 app:srcCompat="@drawable/calendario" />
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="39dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="23dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="50dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="5dp"
                 android:background="#FFFFFF"
-                app:layout_constraintEnd_toStartOf="@+id/descripcion"
+                app:layout_constraintEnd_toStartOf="@+id/car_descriptionTIL"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6"
                 app:srcCompat="@drawable/descripcion" />
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="39dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="52dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="7dp"
                 android:background="#FFFFFF"
-                app:layout_constraintEnd_toStartOf="@+id/CV"
+                app:layout_constraintEnd_toStartOf="@+id/car_cvTIL"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
                 app:srcCompat="@drawable/caballo" />
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="44dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="56dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="5dp"
                 android:background="#FFFFFF"
-                app:layout_constraintEnd_toStartOf="@+id/modelo"
+                app:layout_constraintEnd_toStartOf="@+id/car_modelTIL"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2"
                 app:srcCompat="@drawable/modelocoche" />
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="44dp"
-                android:layout_height="38dp"
-                android:layout_marginTop="95dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="54dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="338dp"
+                android:layout_marginEnd="5dp"
                 android:background="#FFFFFF"
-                app:layout_constraintEnd_toStartOf="@+id/marca"
-                app:layout_constraintTop_toBottomOf="@+id/imagen"
+                app:layout_constraintEnd_toStartOf="@+id/car_brandTIL"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/iconmarca" />
 
             <Button
@@ -99,32 +98,124 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
                 android:backgroundTint="@color/ic_launcher_background"
-                android:text="GUARDAR"
+                android:text="@string/guardar"
                 app:layout_constraintEnd_toStartOf="@+id/cancelButton"
-                app:layout_constraintTop_toBottomOf="@+id/reprogramable" />
+                app:layout_constraintTop_toBottomOf="@+id/reprogrammable" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/cleanButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="159dp"
                 android:backgroundTint="@color/ic_launcher_background"
-                android:text="Limpiar"
+                android:text="@string/clean"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imagen" />
 
-            <EditText
-                android:id="@+id/editTextDate"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/car_brandTIL"
+                android:layout_width="230dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="325dp"
+                android:layout_marginEnd="88dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/car_brandET"
+                    android:layout_width="230dp"
+                    android:layout_height="match_parent"
+                    android:hint="@string/brand" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/car_modelTIL"
+                android:layout_width="230dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="400dp"
+                android:layout_marginEnd="88dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/car_modelET"
+                    android:layout_width="230dp"
+                    android:layout_height="match_parent"
+                    android:hint="@string/model" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/car_cvTIL"
+                android:layout_width="230dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="475dp"
+                android:layout_marginEnd="88dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/car_cvET"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/cv" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/car_descriptionTIL"
+                android:layout_width="230dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="550dp"
+                android:layout_marginEnd="88dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/car_descriptionET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/car_description" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/motor_type"
+                android:layout_width="230dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="625dp"
+                android:layout_marginEnd="88dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/car_launchdateTIL"
+                android:layout_width="230dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="700dp"
+                android:layout_marginEnd="88dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/car_launchdateET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/launchDate" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Switch
+                android:id="@+id/reprogrammable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="100dp"
-                android:ems="10"
-                android:inputType="date"
-                android:text="Fecha Lanzamiento"
+                android:layout_marginTop="775dp"
+                android:layout_marginEnd="132dp"
+                android:text="@string/reprogramable"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/motorType" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imagen"
@@ -132,78 +223,11 @@
                 android:layout_height="199dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="84dp"
-                android:contentDescription="TODO"
+                android:contentDescription="@string/todo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_landscape"
                 tools:srcCompat="@tools:sample/avatars" />
-
-            <Switch
-                android:id="@+id/reprogramable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="132dp"
-                android:text="Reprogramable"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
-
-            <EditText
-                android:id="@+id/descripcion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="100dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:text="Descripción"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/CV" />
-
-            <EditText
-                android:id="@+id/CV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="100dp"
-                android:ems="10"
-                android:inputType="number"
-                android:text="CV"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/modelo" />
-
-            <EditText
-                android:id="@+id/modelo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="100dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Modelo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/marca" />
-
-            <EditText
-                android:id="@+id/marca"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="100dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Marca"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button" />
-
-            <Spinner
-                android:id="@+id/motorType"
-                android:layout_width="211dp"
-                android:layout_height="37dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="100dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descripcion" />
 
             <Button
                 android:id="@+id/cancelButton"
@@ -212,9 +236,9 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="84dp"
                 android:backgroundTint="#B81414"
-                android:text="ELIMINAR"
+                android:text="@string/eliminar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reprogramable" />
+                app:layout_constraintTop_toBottomOf="@+id/reprogrammable" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

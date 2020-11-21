@@ -10,14 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InfoCarApp">
         <activity
+            android:name=".views.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:theme="@style/Theme.InfoCarApp.NoActionBar"></activity>
+        <activity
             android:name=".views.FormActivity"
             android:label="@string/title_activity_form"
-            android:theme="@style/Theme.InfoCarApp.NoActionBar"></activity>
+            android:theme="@style/Theme.InfoCarApp.NoActionBar" />
         <activity
             android:name=".views.LogoActivity"
             android:label="InfoCar"
-            android:theme="@style/Theme.InfoCarApp.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.InfoCarApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,8 +31,7 @@
         <activity
             android:name=".views.ListActivity"
             android:label="InfoCar"
-            android:theme="@style/Theme.InfoCarApp.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.InfoCarApp.NoActionBar"></activity>
     </application>
 
 </manifest>
