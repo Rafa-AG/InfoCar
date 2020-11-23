@@ -8,7 +8,8 @@
         android:label="InfoCar"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.InfoCarApp">
+        android:theme="@style/Theme.InfoCarApp"
+        android:name=".views.MyApplication">
         <activity
             android:name=".views.AboutActivity"
             android:label="@string/title_activity_about"

@@ -4,7 +4,8 @@
     <item android:title="@string/sort" />
     <item android:title="@string/configuration" />
     <item android:title="@string/help"/>
-    <item android:title="@string/about_us"/>
+    <item android:title="@string/about_us"
+        android:id="@+id/about_us"/>
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search"

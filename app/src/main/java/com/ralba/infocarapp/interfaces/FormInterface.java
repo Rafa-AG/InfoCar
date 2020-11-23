@@ -9,6 +9,7 @@ public interface FormInterface {
     public interface Presenter{
         void onClickSaveCar();
         void onClickCancel();
+        String getError(String errorCode);
     }
 
 }

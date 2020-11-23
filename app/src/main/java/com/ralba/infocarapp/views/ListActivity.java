@@ -63,8 +63,9 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
             return true;
         }
 
-        if(id==R.id.action_settings){
-            Log.d(TAG, "Menu Settings click");
+        if(id==R.id.about_us){
+            Log.d(TAG, "Menu About Us click");
+            presenter.onClickAboutUs();
             return true;
         }
 

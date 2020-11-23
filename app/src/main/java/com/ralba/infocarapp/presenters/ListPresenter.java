@@ -20,4 +20,9 @@ public class ListPresenter implements ListInterface.Presenter{
 
     }
 
+    @Override
+    public void onClickAboutUs() {
+        view.startAboutActivity();
+    }
+
 }

@@ -26,7 +26,7 @@
     <string name="sort">Ordenar</string>
     <string name="configuration">Configuración</string>
     <string name="help">Ayuda</string>
-    <string name="about_us">About us...</string>
+    <string name="about_us">Acerca de...</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="app_description">InfoCar es una aplicación dedicada a la información de vehículos.</string>
     <string name="version">Versión 0.2</string>
@@ -39,4 +39,14 @@
     <string name="motor_type">Tipo de Motor</string>
     <string name="brand">Marca</string>
     <string name="model">Modelo</string>
+    <string name="incorrect_brand">Marca incorrecta, no se pueden introducir números o signos</string>
+    <string name="incorrect_model">Modelo incorrecto</string>
+    <string name="incorrect_cv">CV incorrectos</string>
+    <string name="incorrect_description">Descripción incorrecta</string>
+    <string name="incorrect_launchdate">Fecha incorrecta, el fórmato correcto es dd/mm/yyyy</string>
+    <string name="CarBrand">CarBrand</string>
+    <string name="CarModel">CarModel</string>
+    <string name="CarDescription">CarDescription</string>
+    <string name="CarCV">CarCV</string>
+    <string name="CarLaunchDate">CarLaunchDate</string>
 </resources>

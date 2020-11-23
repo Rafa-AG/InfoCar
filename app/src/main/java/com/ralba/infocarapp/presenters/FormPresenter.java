@@ -1,6 +1,8 @@
 package com.ralba.infocarapp.presenters;
 
+import com.ralba.infocarapp.R;
 import com.ralba.infocarapp.interfaces.FormInterface;
+import com.ralba.infocarapp.views.MyApplication;
 
 public class FormPresenter implements FormInterface.Presenter {
 
@@ -18,6 +20,29 @@ public class FormPresenter implements FormInterface.Presenter {
     @Override
     public void onClickCancel() {
         view.closeFormActivity();
+    }
+
+    @Override
+    public String getError(String errorCode){
+        String errorMSG="";
+        switch (errorCode){
+            case "CarBrand":
+                errorMSG=MyApplication.getContext().getResources().getString(R.string.incorrect_brand);
+                break;
+            case "CarModel":
+                errorMSG=MyApplication.getContext().getResources().getString(R.string.incorrect_model);
+                break;
+            case "CarCV":
+                errorMSG=MyApplication.getContext().getResources().getString(R.string.incorrect_cv);
+                break;
+            case "CarDescription":
+                errorMSG=MyApplication.getContext().getResources().getString(R.string.incorrect_description);
+                break;
+            case "CarLaunchDate":
+                errorMSG=MyApplication.getContext().getResources().getString(R.string.incorrect_launchdate);
+                break;
+        }
+        return errorMSG;
     }
 
 }
