@@ -3,17 +3,21 @@
     package="com.ralba.infocarapp">
 
     <application
+        android:name=".views.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="InfoCar"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.InfoCarApp"
-        android:name=".views.MyApplication">
+        android:theme="@style/Theme.InfoCarApp">
+        <activity
+            android:name=".views.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@style/Theme.InfoCarApp.NoActionBar"></activity>
         <activity
             android:name=".views.AboutActivity"
             android:label="@string/title_activity_about"
-            android:theme="@style/Theme.InfoCarApp.NoActionBar"></activity>
+            android:theme="@style/Theme.InfoCarApp.NoActionBar" />
         <activity
             android:name=".views.FormActivity"
             android:label="@string/title_activity_form"
@@ -32,7 +36,7 @@
         <activity
             android:name=".views.ListActivity"
             android:label="InfoCar"
-            android:theme="@style/Theme.InfoCarApp.NoActionBar"></activity>
+            android:theme="@style/Theme.InfoCarApp.NoActionBar" />
     </application>
 
 </manifest>

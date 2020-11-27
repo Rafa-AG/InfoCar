@@ -1,52 +1,56 @@
 <resources>
-    <string name="app_name">InfoCarApp</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name" translatable="false">InfoCar</string>
     <string name="action_search">Search</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_logo">LogoActivity</string>
-    <string name="title_activity_form">FormActivity</string>
+    <string name="title_activity_logo" translatable="false">LogoActivity</string>
+    <string name="title_activity_form" translatable="false">FormActivity</string>
     <string name="results">915616651 results found</string>
-    <string name="guardar">GUARDAR</string>
-    <string name="clean">Limpiar</string>
-    <string name="launchDate">Fecha Lanzamiento</string>
-    <string name="todo">TODO</string>
-    <string name="reprogramable">Reprogramable</string>
-    <string name="car_description">Descripción</string>
-    <string name="cv">CV</string>
-    <string name="eliminar">ELIMINAR</string>
-    <string name="add_vehicle">Añadir Vehículo</string>
+    <string name="save">Save</string>
+    <string name="clean">Clean</string>
+    <string name="launchDate">Launch date</string>
+    <string name="todo">All</string>
+    <string name="reprogrammable">Reprogrammable</string>
+    <string name="car_description">Description</string>
+    <string name="hp">HP</string>
+    <string name="delete">Delete</string>
+    <string name="add_vehicle">Add Vehicle</string>
     <string name="search">Search</string>
-    <string name="sort">Ordenar</string>
-    <string name="configuration">Configuración</string>
-    <string name="help">Ayuda</string>
-    <string name="about_us">Acerca de...</string>
-    <string name="title_activity_about">AboutActivity</string>
-    <string name="app_description">InfoCar es una aplicación dedicada a la información de vehículos.</string>
-    <string name="version">Versión 0.2</string>
-    <string name="developer_by">Desarrollada por: <br/> Rafael Alba González</string>
-    <string name="contact_us">Contáctanos en: <br/> infocarapp@example.com</string>
-    <string name="gasoline">Gasolina</string>
-    <string name="gasoil">Diésel</string>
-    <string name="hybrid">Híbrido</string>
-    <string name="electric">Eléctrico</string>
-    <string name="motor_type">Tipo de Motor</string>
-    <string name="brand">Marca</string>
-    <string name="model">Modelo</string>
-    <string name="incorrect_brand">Marca incorrecta, no se pueden introducir números o signos</string>
-    <string name="incorrect_model">Modelo incorrecto</string>
-    <string name="incorrect_cv">CV incorrectos</string>
-    <string name="incorrect_description">Descripción incorrecta</string>
-    <string name="incorrect_launchdate">Fecha incorrecta, el fórmato correcto es dd/mm/yyyy</string>
-    <string name="CarBrand">CarBrand</string>
-    <string name="CarModel">CarModel</string>
-    <string name="CarDescription">CarDescription</string>
-    <string name="CarCV">CarCV</string>
-    <string name="CarLaunchDate">CarLaunchDate</string>
+    <string name="sort">Sort</string>
+    <string name="configuration">Configuration</string>
+    <string name="help">Help</string>
+    <string name="about_us">About us...</string>
+    <string name="title_activity_about" translatable="false">AboutActivity</string>
+    <string name="app_description">" InfoCar is an application dedicated to vehicle information."</string>
+    <string name="version">Version 0.3</string>
+    <string name="developer_by">Developed by: <br /> Rafael Alba González</string>
+    <string name="contact_us">Contact us: <br /> infocarapp@example.com</string>
+    <string name="gasoline">Gasoline</string>
+    <string name="diesel">Diesel</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="electric">Electric</string>
+    <string name="motor_type">Motor Type</string>
+    <string name="brand">Brand</string>
+    <string name="model">Model</string>
+    <string name="incorrect_brand">" Wrong brand, cannot enter numbers or signs."</string>
+    <string name="incorrect_model">Wrong model.</string>
+    <string name="incorrect_hp">Wrong HP.</string>
+    <string name="incorrect_description">Wrong description.</string>
+    <string name="incorrect_launch_date">Wrong date, please use dd/mm/yyyy.</string>
+    <string name="CarBrand" translatable="false">CarBrand</string>
+    <string name="CarModel" translatable="false">CarModel</string>
+    <string name="CarDescription" translatable="false">CarDescription</string>
+    <string name="CarHP" translatable="false">CarHP</string>
+    <string name="CarLaunchDate" translatable="false">CarLaunchDate</string>
+    <string name="action_settings">Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_motor_type">Add a new Motor Type...</string>
+    <string name="add_new_type">Add a new motor type</string>
+    <string name="new_type">Write the new motor type</string>
+    <string name="add">Add</string>
+    <string name="title_activity_search" translatable="false">SearchActivity</string>
+    <string name="search_vehicle">Search Vehicle</string>
 </resources>

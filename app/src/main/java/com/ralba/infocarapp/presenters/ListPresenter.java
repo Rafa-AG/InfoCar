@@ -16,13 +16,13 @@ public class ListPresenter implements ListInterface.Presenter{
     }
 
     @Override
-    public void onClickFloatingButton() {
-
+    public void onClickAboutUs() {
+        view.startAboutActivity();
     }
 
     @Override
-    public void onClickAboutUs() {
-        view.startAboutActivity();
+    public void onClickSearch() {
+        view.startSearchActivity();
     }
 
 }

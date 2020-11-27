@@ -34,7 +34,7 @@
                 android:layout_marginTop="41dp"
                 android:layout_marginEnd="4dp"
                 android:background="#FFFFFF"
-                app:layout_constraintEnd_toStartOf="@+id/motor_type"
+                app:layout_constraintEnd_toStartOf="@+id/search_motor"
                 app:layout_constraintTop_toBottomOf="@+id/imageView7"
                 app:srcCompat="@drawable/motor" />
 
@@ -65,7 +65,7 @@
                 android:layout_marginTop="45dp"
                 android:layout_marginEnd="7dp"
                 android:background="#FFFFFF"
-                app:layout_constraintEnd_toStartOf="@+id/car_cvTIL"
+                app:layout_constraintEnd_toStartOf="@+id/car_hpTIL"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
                 app:srcCompat="@drawable/caballo" />
 
@@ -96,14 +96,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/ic_launcher_background"
-                android:text="@string/guardar"
+                android:text="@string/save"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/cancelButton"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/reprogrammable" />
 
             <Button
-                android:id="@+id/cleanButton"
+                android:id="@+id/search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -148,7 +150,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/car_cvTIL"
+                android:id="@+id/car_hpTIL"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="525dp"
@@ -158,10 +160,10 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/car_cvET"
+                    android:id="@+id/car_hpET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/cv" />
+                    android:hint="@string/hp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -182,7 +184,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Spinner
-                android:id="@+id/motor_type"
+                android:id="@+id/search_motor"
                 android:layout_width="230dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="725dp"
@@ -212,7 +214,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="925dp"
-                android:text="@string/reprogramable"
+                android:text="@string/reprogrammable"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -234,10 +236,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="84dp"
                 android:backgroundTint="#B81414"
-                android:text="@string/eliminar"
+                android:text="@string/cancel"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/saveButton"
                 app:layout_constraintTop_toBottomOf="@+id/reprogrammable" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

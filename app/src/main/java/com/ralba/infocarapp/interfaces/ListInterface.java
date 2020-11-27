@@ -5,12 +5,13 @@ public interface ListInterface {
     public interface View{
         void startFormActivity();
         void startAboutActivity();
+        void startSearchActivity();
     }
 
     public interface Presenter{
         void onClickAddCar();
-        void onClickFloatingButton();
         void onClickAboutUs();
+        void onClickSearch();
     }
 
 }

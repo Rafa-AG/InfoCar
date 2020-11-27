@@ -1,25 +1,20 @@
 package com.ralba.infocarapp.presenters;
 
 import com.ralba.infocarapp.R;
-import com.ralba.infocarapp.interfaces.FormInterface;
+import com.ralba.infocarapp.interfaces.SearchInterface;
 import com.ralba.infocarapp.views.MyApplication;
 
-public class FormPresenter implements FormInterface.Presenter {
+public class SearchPresenter implements SearchInterface.Presenter{
 
-    private FormInterface.View view;
+    private SearchInterface.View view;
 
-    public FormPresenter(FormInterface.View view){
+    public SearchPresenter(SearchInterface.View view){
         this.view=view;
     }
 
     @Override
-    public void onClickSaveCar() {
-        view.closeFormActivity();
-    }
-
-    @Override
-    public void onClickCancel() {
-        view.closeFormActivity();
+    public void onClickSearch() {
+        view.closeSearchActivity();
     }
 
     @Override
@@ -27,7 +22,7 @@ public class FormPresenter implements FormInterface.Presenter {
         String errorMSG="";
         switch (errorCode){
             case "CarBrand":
-                errorMSG=MyApplication.getContext().getResources().getString(R.string.incorrect_brand);
+                errorMSG= MyApplication.getContext().getResources().getString(R.string.incorrect_brand);
                 break;
             case "CarModel":
                 errorMSG=MyApplication.getContext().getResources().getString(R.string.incorrect_model);

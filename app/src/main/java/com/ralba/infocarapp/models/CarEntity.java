@@ -8,12 +8,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class CarEntity {
 
     private String brand;
     private String model;
-    private String CV;
+    private String HP;
     private String description;
     private String motorType;
     private Date launchDate;
@@ -26,7 +27,7 @@ public class CarEntity {
     }
 
     public boolean setBrand(String brand) {
-        if(brand.toString().length()>2 && brand.toString().matches("[a-z A-Z]+") && brand.toString().matches("[^0-9]+")){
+        if(brand!=null && brand.length()>0 && brand.matches("[A-Za-zÑñ]+") && brand.matches("[^0-9]")){
             this.brand = brand;
             return true;
         }else{
@@ -39,7 +40,7 @@ public class CarEntity {
     }
 
     public boolean setModel(String model) {
-        if(model.toString().length()>0){
+        if(model.length()>0){
             this.model = model;
             return true;
         }else{
@@ -47,13 +48,13 @@ public class CarEntity {
         }
     }
 
-    public String getCV() {
-        return CV;
+    public String getHP() {
+        return HP;
     }
 
-    public boolean setCV(String CV) {
-        if(CV.toString().length()>0 && CV.toString().matches("[^a-zA-Z]+")){
-            this.CV=CV;
+    public boolean setHP(String HP) {
+        if(HP.matches("[0-9]*")){
+            this.HP=HP;
             return true;
         }else{
             return false;
@@ -65,7 +66,7 @@ public class CarEntity {
     }
 
     public boolean setDescription(String description) {
-        if(description.toString().length()>0){
+        if(description.length()>0){
             this.description=description;
             return true;
         }else{
@@ -87,8 +88,9 @@ public class CarEntity {
 
     public boolean setLaunchDate(String launchDate) {
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+        String restriction = "^(?:(?:(?:0?[1-9]|1\\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\\d|0?[1-9]\\d{2}|[1-9]\\d{3})|29[/]0?2[/](?:\\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$";
 
-        if(launchDate.toString().length()==10 && launchDate.toString().matches("[^a-zA-Z]+")){
+        if(launchDate.length()==10 && launchDate.matches(restriction)){
             try {
                 this.launchDate=date.parse(launchDate);
             } catch (ParseException e) {

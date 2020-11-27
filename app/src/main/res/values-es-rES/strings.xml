@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_search">Buscar</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
+    <string name="results">915616651 resultados encontrados</string>
+    <string name="clean">Limpiar</string>
+    <string name="launchDate">Fecha de lanzamiento</string>
+    <string name="todo">Todo</string>
+    <string name="car_description">Descripción</string>
+    <string name="hp">CV</string>
+    <string name="add_vehicle">Añadir Vehículo</string>
+    <string name="search">Buscar</string>
+    <string name="sort">Ordenar</string>
+    <string name="configuration">Configuración</string>
+    <string name="help">Ayuda</string>
+    <string name="about_us">Acerca de...</string>
+    <string name="app_description">InfoCar es una aplicación dedicada a la información de vehículos.</string>
+    <string name="version">Versión 0.3</string>
+    <string name="developer_by">Desarrollada por: <br /> Rafael Alba González</string>
+    <string name="contact_us">Contáctanos en: <br /> infocarapp@example.com</string>
+    <string name="gasoline">Gasolina</string>
+    <string name="hybrid">Híbrido</string>
+    <string name="electric">Eléctrico</string>
+    <string name="motor_type">Tipo de Motor</string>
+    <string name="brand">Marca</string>
+    <string name="model">Modelo</string>
+    <string name="incorrect_brand">Marca incorrecta, no se pueden introducir números o signos.</string>
+    <string name="incorrect_model">Modelo incorrecto.</string>
+    <string name="incorrect_description">Descripción incorrecta.</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="delete">Eliminar</string>
+    <string name="reprogrammable">Reprogramable</string>
+    <string name="save">Guardar</string>
+    <string name="diesel">Diésel</string>
+    <string name="incorrect_launch_date">Fecha incorrecta, el fórmato correcto es dd/mm/yyyy.</string>
+    <string name="incorrect_hp">CV incorrectos.</string>
+    <string name="cancel">Cancelar</string>
+    <string name="add_motor_type">Añadir nuevo Tipo de Motor...</string>
+    <string name="add_new_type">Añadir nuevo tipo de motor</string>
+    <string name="new_type">Escribe el nuevo tipo de motor</string>
+    <string name="add">Añadir</string>
+    <string name="search_vehicle">Buscar Vehículo</string>
+</resources>
