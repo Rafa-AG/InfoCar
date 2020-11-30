@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -97,7 +98,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position>1){
-                    Toast.makeText(spinner.getContext(), "Has seleccionado "+spinner.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(spinner.getContext(), getResources().getString(R.string.have_selected)+" "+spinner.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
                 }else if(position==1){
                     LayoutInflater layoutActivity = LayoutInflater.from(myContext);
                     View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog, null);
@@ -111,17 +112,23 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                     alertDialog.setCancelable(false).setPositiveButton(getResources().getString(R.string.add),
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialogBox, int id) {
-                                    adapter.add(dialogInput.getText().toString());
-                                    spinner.setSelection(adapter.getPosition(dialogInput.getText().toString()));
+                                    if(dialogInput.getText().toString().equals("")){
+                                        Toast.makeText(myContext, getResources().getString(R.string.nothing_added), Toast.LENGTH_LONG).show();
+                                        spinner.setSelection(adapter.getPosition(getResources().getString(R.string.motor_type)));
+                                    }else{
+                                        adapter.add(dialogInput.getText().toString());
+                                        spinner.setSelection(adapter.getPosition(dialogInput.getText().toString()));
+                                    }
                                 }
                             }).setNegativeButton(getResources().getString(R.string.cancel),
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialogBox, int id) {
+                                    spinner.setSelection(adapter.getPosition(getResources().getString(R.string.motor_type)));
                                     dialogBox.cancel();
                                 }
                             }).create().show();
                 }else{
-                    Toast.makeText(spinner.getContext(), "Nada seleccionado", Toast.LENGTH_LONG).cancel();
+                    Toast.makeText(spinner.getContext(), getResources().getString(R.string.nothing_selected), Toast.LENGTH_LONG).cancel();
                 }
             }
 
@@ -142,7 +149,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onClickDelete();
+                deleteCar();
             }
         });
 
@@ -261,6 +268,29 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     @Override
     public void closeFormActivity() {
         finish();
+    }
+
+    private void deleteCar(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(FormActivity.this);
+        builder.setTitle(getResources().getString(R.string.delete_car));
+        builder.setMessage(getResources().getString(R.string.ask_deletion));
+
+        builder.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                presenter.onClickDelete();
+            }
+        });
+
+        builder.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
     }
 
 }

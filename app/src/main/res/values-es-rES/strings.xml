@@ -42,4 +42,12 @@
     <string name="add">Añadir</string>
     <string name="search_vehicle">Buscar Vehículo</string>
     <string name="help_date">El formato correcto dd/mm/yyyy</string>
+    <string name="nothing_selected">Nada seleccionado</string>
+    <string name="have_selected">Has seleccionado</string>
+    <string name="nothing_added">Nada añadido</string>
+    <string name="accept">Aceptar</string>
+    <string name="delete_car">Eliminar Vehículo</string>
+    <string name="ask_deletion">¿Desea eliminar el vehículo?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
 </resources>

@@ -54,4 +54,12 @@
     <string name="title_activity_search" translatable="false">SearchActivity</string>
     <string name="search_vehicle">Search Vehicle</string>
     <string name="help_date">Valid format is dd/mm/yyyy</string>
+    <string name="nothing_selected">Nothing selected</string>
+    <string name="have_selected">Have selected</string>
+    <string name="nothing_added">Nothing added</string>
+    <string name="accept">Accept</string>
+    <string name="delete_car">Delete Vehicle</string>
+    <string name="ask_deletion">Do you want to delete this vehicle?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
