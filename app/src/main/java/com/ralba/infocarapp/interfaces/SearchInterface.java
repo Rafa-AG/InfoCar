@@ -8,7 +8,6 @@ public interface SearchInterface {
 
     public interface Presenter{
         void onClickSearch();
-        String getError(String errorCode);
     }
 
 }

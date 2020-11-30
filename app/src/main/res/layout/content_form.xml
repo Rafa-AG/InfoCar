@@ -24,7 +24,7 @@
                 android:layout_marginEnd="1dp"
                 android:background="#FFFFFF"
                 app:layout_constraintEnd_toStartOf="@+id/reprogrammable"
-                app:layout_constraintTop_toBottomOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/image_search_calendar"
                 app:srcCompat="@drawable/change" />
 
             <ImageView
@@ -39,7 +39,7 @@
                 app:srcCompat="@drawable/motor" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/image_search_calendar"
                 android:layout_width="64dp"
                 android:layout_height="62dp"
                 android:layout_marginTop="49dp"
@@ -100,7 +100,7 @@
                 android:backgroundTint="@color/ic_launcher_background"
                 android:text="@string/save"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/cancelButton"
+                app:layout_constraintEnd_toStartOf="@+id/delete_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/reprogrammable" />
 
@@ -232,12 +232,12 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <Button
-                android:id="@+id/cancelButton"
+                android:id="@+id/delete_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="#B81414"
-                android:text="@string/cancel"
+                android:text="@string/delete"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/saveButton"
                 app:layout_constraintTop_toBottomOf="@+id/reprogrammable" />

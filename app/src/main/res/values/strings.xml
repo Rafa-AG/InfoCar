@@ -53,4 +53,5 @@
     <string name="add">Add</string>
     <string name="title_activity_search" translatable="false">SearchActivity</string>
     <string name="search_vehicle">Search Vehicle</string>
+    <string name="help_date">Valid format is dd/mm/yyyy</string>
 </resources>

@@ -27,7 +27,7 @@ public class CarEntity {
     }
 
     public boolean setBrand(String brand) {
-        if(brand!=null && brand.length()>0 && brand.matches("[A-Za-zÑñ]+") && brand.matches("[^0-9]")){
+        if(brand.length()>0 && brand.matches("[A-Za-zÑñ]+") && brand.matches("[^0-9]+")){
             this.brand = brand;
             return true;
         }else{
@@ -90,7 +90,7 @@ public class CarEntity {
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
         String restriction = "^(?:(?:(?:0?[1-9]|1\\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\\d|0?[1-9]\\d{2}|[1-9]\\d{3})|29[/]0?2[/](?:\\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$";
 
-        if(launchDate.length()==10 && launchDate.matches(restriction)){
+        if(launchDate.matches(restriction)){
             try {
                 this.launchDate=date.parse(launchDate);
             } catch (ParseException e) {

@@ -18,7 +18,7 @@ public class FormPresenter implements FormInterface.Presenter {
     }
 
     @Override
-    public void onClickCancel() {
+    public void onClickDelete() {
         view.closeFormActivity();
     }
 

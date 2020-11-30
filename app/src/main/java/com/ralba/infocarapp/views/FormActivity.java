@@ -1,5 +1,6 @@
 package com.ralba.infocarapp.views;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -15,15 +16,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class FormActivity extends AppCompatActivity implements FormInterface.View {
 
@@ -48,6 +53,9 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
     private Context myContext;
     private ArrayAdapter<String> adapter;
+    private Calendar calendar;
+    private DatePickerDialog launchDate;
+    private int year, month, day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +99,27 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                 if (position>1){
                     Toast.makeText(spinner.getContext(), "Has seleccionado "+spinner.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
                 }else if(position==1){
-                    addMotorType(spinner);
+                    LayoutInflater layoutActivity = LayoutInflater.from(myContext);
+                    View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog, null);
+
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(myContext);
+
+                    alertDialog.setView(viewAlertDialog);
+
+                    final EditText dialogInput = (EditText) viewAlertDialog.findViewById(R.id.dialogInput);
+
+                    alertDialog.setCancelable(false).setPositiveButton(getResources().getString(R.string.add),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialogBox, int id) {
+                                    adapter.add(dialogInput.getText().toString());
+                                    spinner.setSelection(adapter.getPosition(dialogInput.getText().toString()));
+                                }
+                            }).setNegativeButton(getResources().getString(R.string.cancel),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialogBox, int id) {
+                                    dialogBox.cancel();
+                                }
+                            }).create().show();
                 }else{
                     Toast.makeText(spinner.getContext(), "Nada seleccionado", Toast.LENGTH_LONG).cancel();
                 }
@@ -110,11 +138,11 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
 
-        Button cancelButton = findViewById(R.id.cancelButton);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        Button deleteButton = findViewById(R.id.delete_button);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onClickCancel();
+                presenter.onClickDelete();
             }
         });
 
@@ -190,16 +218,44 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         launchDateET.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+                launchDateTIL.setHelperText(MyApplication.getContext().getResources().getString(R.string.help_date));
+                launchDateTIL.setHelperTextColor(MyApplication.getContext().getResources().getColorStateList(R.color.ic_launcher_background));
                 if(!hasFocus){
                     if(!car.setLaunchDate(launchDateET.getText().toString())){
                         launchDateTIL.setError(presenter.getError(MyApplication.getContext().getResources().getString(R.string.CarLaunchDate)));
                     }else{
                         launchDateTIL.setError(null);
+                        launchDateTIL.setHelperText(null);
                     }
                 }
             }
         });
 
+        calendar=Calendar.getInstance();
+        year=calendar.get(Calendar.YEAR);
+        month=calendar.get(Calendar.MONTH);
+        day=calendar.get(Calendar.DAY_OF_MONTH);
+
+        ImageView buttonLaunchDate=findViewById(R.id.image_search_calendar);
+        buttonLaunchDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchDate=new DatePickerDialog(myContext, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        launchDateET.setText(String.valueOf(day)+"/"+String.valueOf(month+1)+"/"+String.valueOf(year));
+                    }
+                }, year, month, day);
+                launchDate.show();
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_form, menu);
+        return true;
     }
 
     @Override
@@ -207,27 +263,4 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         finish();
     }
 
-    public void addMotorType(Spinner spinner){
-        LayoutInflater layoutActivity = LayoutInflater.from(myContext);
-        View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog, null);
-
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(myContext);
-
-        alertDialog.setView(viewAlertDialog);
-
-        final EditText dialogInput = (EditText) viewAlertDialog.findViewById(R.id.dialogInput);
-
-        alertDialog.setCancelable(false).setPositiveButton(getResources().getString(R.string.add),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialogBox, int id) {
-                                adapter.add(dialogInput.getText().toString());
-                                spinner.setSelection(adapter.getPosition(dialogInput.getText().toString()));
-                            }
-                        }).setNegativeButton(getResources().getString(R.string.cancel),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialogBox, int id) {
-                                dialogBox.cancel();
-                            }
-                        }).create().show();
-    }
 }
