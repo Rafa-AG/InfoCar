@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="#FAB163"
+        app:backgroundTint="@color/light_orange"
         app:srcCompat="@drawable/mas" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
