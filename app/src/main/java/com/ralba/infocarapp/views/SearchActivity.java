@@ -72,8 +72,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
         month=calendar.get(Calendar.MONTH);
         day=calendar.get(Calendar.DAY_OF_MONTH);
 
-        ImageView buttonLaunchDate=findViewById(R.id.image_search_calendar);
-        buttonLaunchDate.setOnClickListener(new View.OnClickListener() {
+        launchDateET.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchDate=new DatePickerDialog(myContext, new DatePickerDialog.OnDateSetListener() {
@@ -83,17 +82,6 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
                     }
                 }, year, month, day);
                 launchDate.show();
-            }
-        });
-
-        launchDateET.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                launchDateTIL.setHelperText(MyApplication.getContext().getResources().getString(R.string.help_date));
-                launchDateTIL.setHelperTextColor(MyApplication.getContext().getResources().getColorStateList(R.color.ic_launcher_background));
-                if(!hasFocus){
-                    launchDateTIL.setHelperText(null);
-                }
             }
         });
 
