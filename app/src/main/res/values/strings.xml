@@ -8,7 +8,7 @@
     <string name="previous">Previous</string>
     <string name="title_activity_logo" translatable="false">LogoActivity</string>
     <string name="title_activity_form" translatable="false">FormActivity</string>
-    <string name="results">915616651 results found</string>
+    <string name="results">12 results found</string>
     <string name="save">Save</string>
     <string name="clean">Clean</string>
     <string name="launchDate">Launch date</string>
@@ -26,6 +26,7 @@
     <string name="title_activity_about" translatable="false">AboutActivity</string>
     <string name="app_description">" InfoCar is an application dedicated to vehicle information."</string>
     <string name="version">Version 0.3</string>
+    <string name="developer_name" translatable="false">Rafael Alba González</string>
     <string name="developer_by">Developed by: <br /> Rafael Alba González</string>
     <string name="contact_us">Contact us: <br /> infocarapp@example.com</string>
     <string name="gasoline">Gasoline</string>

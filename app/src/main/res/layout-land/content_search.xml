@@ -83,7 +83,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/search_button"
+                android:id="@+id/clean_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="340dp"
@@ -96,7 +96,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/image_search_calendar"
+                android:id="@+id/form_icon_calendar"
                 android:layout_width="64dp"
                 android:layout_height="62dp"
                 android:layout_marginTop="43dp"

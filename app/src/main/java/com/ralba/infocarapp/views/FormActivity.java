@@ -15,7 +15,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -137,7 +136,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
 
-        Button saveButton = findViewById(R.id.saveButton);
+        Button saveButton = findViewById(R.id.save_button);
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -243,7 +242,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         month=calendar.get(Calendar.MONTH);
         day=calendar.get(Calendar.DAY_OF_MONTH);
 
-        ImageView buttonLaunchDate=findViewById(R.id.image_search_calendar);
+        ImageView buttonLaunchDate=findViewById(R.id.form_icon_calendar);
         buttonLaunchDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

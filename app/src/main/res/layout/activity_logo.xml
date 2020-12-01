@@ -8,7 +8,7 @@
     tools:context=".views.LogoActivity">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/logo_app"
         android:layout_width="178dp"
         android:layout_height="183dp"
         android:layout_marginTop="160dp"
@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/logoinfocar" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/logo_app_name"
         android:layout_width="213dp"
         android:layout_height="95dp"
         android:layout_marginTop="4dp"
@@ -27,17 +27,17 @@
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/logo_app" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/logo_developer_name"
         android:layout_width="382dp"
         android:layout_height="46dp"
         android:layout_marginTop="108dp"
-        android:text="Rafael Alba González"
+        android:text="@string/developer_name"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/logo_app" />
 </androidx.constraintlayout.widget.ConstraintLayout>
