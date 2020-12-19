@@ -1,10 +1,19 @@
 package com.ralba.infocarapp.views;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.ralba.infocarapp.R;
 import com.ralba.infocarapp.interfaces.FormInterface;
@@ -14,7 +23,11 @@ import com.ralba.infocarapp.presenters.FormPresenter;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -23,16 +36,28 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class FormActivity extends AppCompatActivity implements FormInterface.View {
 
     private FormInterface.Presenter presenter;
+
+    final private int CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 123;
+    private static final int REQUEST_SELECT_IMAGE = 201;
+
+    private ConstraintLayout constraintLayoutFormActivity;
+
+    private String id;
 
     private EditText brandET;
     private TextInputLayout brandTIL;
@@ -50,6 +75,8 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     private TextInputLayout launchDateTIL;
 
     private CarEntity car;
+
+    private ImageView formImage;
 
     private Context myContext;
     private ArrayAdapter<String> adapter;
@@ -78,6 +105,26 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                 }
             });
         }
+
+        formImage = findViewById(R.id.form_image);
+
+        constraintLayoutFormActivity=findViewById(R.id.constraintLayoutFormActivity);
+
+        formImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onClickImage();
+            }
+        });
+
+        Button cleanButton=findViewById(R.id.clean_button);
+
+        cleanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onClickClean();
+            }
+        });
 
         ArrayList<String> items=new ArrayList<>();
         items.add(getResources().getString(R.string.motor_type));
@@ -249,13 +296,39 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                 launchDate=new DatePickerDialog(myContext, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        launchDateET.setText(String.valueOf(day)+"/"+String.valueOf(month+1)+"/"+String.valueOf(year));
+                        String date=String.valueOf(day)+"/"+String.valueOf(month+1)+"/"+String.valueOf(year);
+                        launchDateET.setText(date);
                     }
                 }, year, month, day);
                 launchDate.show();
             }
         });
 
+        id=getIntent().getStringExtra("id");
+
+        if(id!=null){
+            brandET.setText(id);
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    presenter.permissionGranted();
+                    Snackbar.make(constraintLayoutFormActivity, getResources().getString(R.string.write_permission_accepted), Snackbar.LENGTH_LONG)
+                            .show();
+                } else {
+                    presenter.permissionDenied();
+                    Snackbar.make(constraintLayoutFormActivity, getResources().getString(R.string.write_permission_not_accepted), Snackbar.LENGTH_LONG)
+                            .show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 
     @Override
@@ -267,6 +340,31 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     @Override
     public void closeFormActivity() {
         finish();
+    }
+
+    @Override
+    public void selectImageFromGallery() {
+        Snackbar.make(constraintLayoutFormActivity, getResources().getString(R.string.write_permission_granted), Snackbar.LENGTH_LONG).show();
+        Intent intent=new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.choose_picture)),REQUEST_SELECT_IMAGE);
+    }
+
+    @Override
+    public void showRequestPermission() {
+        ActivityCompat.requestPermissions(FormActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, CODE_WRITE_EXTERNAL_STORAGE_PERMISSION);
+    }
+
+    @Override
+    public void showError() {
+        Snackbar.make(constraintLayoutFormActivity, getResources().getString(R.string.write_permission_denied), Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void cleanImage() {
+        formImage.setImageBitmap(null);
+        formImage.setBackground(getDrawable(R.drawable.ic_lands));
     }
 
     private void deleteCar(){
@@ -290,6 +388,35 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
         AlertDialog alertDialog=builder.create();
         alertDialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case (REQUEST_SELECT_IMAGE):
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri selectedImage = data.getData();
+                    String selectedPath = selectedImage.getPath();
+
+                    if (selectedPath != null) {
+                        InputStream imageStream = null;
+                        try {
+                            imageStream = getContentResolver().openInputStream(selectedImage);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+
+                        Bitmap bmp = BitmapFactory.decodeStream(imageStream);
+                        Bitmap imageScaled = Bitmap.createScaledBitmap(bmp, 200, 200, false);
+
+                        formImage.setBackground(null);
+
+                        formImage.setImageBitmap(bmp);
+                    }
+                }
+                break;
+        }
     }
 
 }

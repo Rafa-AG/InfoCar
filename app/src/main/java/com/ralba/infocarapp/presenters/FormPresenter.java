@@ -1,7 +1,19 @@
 package com.ralba.infocarapp.presenters;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.util.Log;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.ralba.infocarapp.R;
 import com.ralba.infocarapp.interfaces.FormInterface;
+import com.ralba.infocarapp.views.FormActivity;
 import com.ralba.infocarapp.views.MyApplication;
 
 public class FormPresenter implements FormInterface.Presenter {
@@ -43,6 +55,34 @@ public class FormPresenter implements FormInterface.Presenter {
                 break;
         }
         return errorMSG;
+    }
+
+    @Override
+    public void onClickImage() {
+        int WriteExternalStoragePermission = ContextCompat.checkSelfPermission(MyApplication.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        Log.d("FormActivity", "WRITE_EXTERNAL_STORAGE Permission: " + WriteExternalStoragePermission);
+        if (WriteExternalStoragePermission != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                view.showRequestPermission();
+            }
+        } else {
+            view.selectImageFromGallery();
+        }
+    }
+
+    @Override
+    public void permissionGranted() {
+        view.selectImageFromGallery();
+    }
+
+    @Override
+    public void permissionDenied() {
+        view.showError();
+    }
+
+    @Override
+    public void onClickClean() {
+        view.cleanImage();
     }
 
 }

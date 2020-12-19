@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 public class CarEntity {
 
+    private String id;
     private String brand;
     private String model;
     private String HP;
@@ -19,8 +20,24 @@ public class CarEntity {
     private String motorType;
     private Date launchDate;
     private boolean reprogrammable;
+    private String image;
 
     public CarEntity() {}
+
+    public CarEntity(String brand, String model, String id, String image){
+        this.brand=brand;
+        this.model=model;
+        this.id=id;
+        this.image=image;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getBrand() {
         return brand;
@@ -109,4 +126,13 @@ public class CarEntity {
     public void setReprogrammable(boolean reprogrammable) {
         this.reprogrammable = reprogrammable;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 }
