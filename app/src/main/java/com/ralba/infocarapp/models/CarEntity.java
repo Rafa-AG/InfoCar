@@ -1,18 +1,17 @@
 package com.ralba.infocarapp.models;
 
-import com.ralba.infocarapp.R;
-import com.ralba.infocarapp.views.MyApplication;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.regex.Pattern;
 
-public class CarEntity {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
+public class CarEntity extends RealmObject {
+
+    @PrimaryKey
     private String id;
+
     private String brand;
     private String model;
     private String HP;
@@ -23,13 +22,6 @@ public class CarEntity {
     private String image;
 
     public CarEntity() {}
-
-    public CarEntity(String brand, String model, String id, String image){
-        this.brand=brand;
-        this.model=model;
-        this.id=id;
-        this.image=image;
-    }
 
     public String getId() {
         return id;

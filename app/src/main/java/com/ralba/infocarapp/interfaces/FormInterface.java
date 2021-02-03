@@ -4,6 +4,10 @@ import android.app.Activity;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.ralba.infocarapp.models.CarEntity;
+
+import java.util.ArrayList;
+
 public interface FormInterface {
 
     public interface View{
@@ -12,16 +16,20 @@ public interface FormInterface {
         void showRequestPermission();
         void showError();
         void cleanImage();
+        void saveCar();
+        void deleteCar();
     }
 
     public interface Presenter{
-        void onClickSaveCar();
-        void onClickDelete();
+        void onClickSaveCar(CarEntity car);
+        void onClickDelete(String id);
         String getError(String errorCode);
         void onClickImage();
         void permissionGranted();
         void permissionDenied();
         void onClickClean();
+        ArrayList<String> getMotorTypes();
+        CarEntity getCarById(String id);
     }
 
 }

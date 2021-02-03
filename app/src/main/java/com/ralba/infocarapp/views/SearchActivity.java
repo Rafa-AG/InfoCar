@@ -2,6 +2,7 @@ package com.ralba.infocarapp.views;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,12 +32,17 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
 
     private Context myContext;
 
+    private EditText brandET;
+    private TextInputLayout brandTIL;
+
     private EditText launchDateET;
     private TextInputLayout launchDateTIL;
 
     private Calendar calendar;
     private DatePickerDialog launchDate;
     private int year, month, day;
+
+    Spinner spinner;
 
     private ArrayAdapter<String> adapter;
 
@@ -58,10 +64,13 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
             toolbar.setNavigationOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    onBackPressed();
+                    onBackPressed();    
                 }
             });
         }
+
+        brandET=findViewById(R.id.search_brandET);
+        brandTIL=findViewById(R.id.search_brandTIL);
 
         launchDateET=findViewById(R.id.search_launch_dateET);
         launchDateTIL=findViewById(R.id.search_launch_dateTIL);
@@ -84,17 +93,12 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
             }
         });
 
-        ArrayList<String> items=new ArrayList<>();
-        items.add(getResources().getString(R.string.motor_type));
-        items.add(getResources().getString(R.string.gasoline));
-        items.add(getResources().getString(R.string.diesel));
-        items.add(getResources().getString(R.string.electric));
-        items.add(getResources().getString(R.string.hybrid));
+        ArrayList<String> items=presenter.getMotorTypes();
 
         adapter=new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, items);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
-        Spinner spinner=(Spinner) findViewById(R.id.search_motor);
+        spinner=(Spinner) findViewById(R.id.search_motor);
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
@@ -131,5 +135,15 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
     @Override
     public void closeSearchActivity() {
         finish();
+    }
+
+    @Override
+    public void searchCar() {
+        Intent i = getIntent();
+        i.putExtra("brand", brandET.getText().toString());
+        i.putExtra("launchDate", launchDateET.getText().toString());
+        i.putExtra("motorType", spinner.getSelectedItemId());
+        setResult(RESULT_OK, i);
+        closeSearchActivity();
     }
 }

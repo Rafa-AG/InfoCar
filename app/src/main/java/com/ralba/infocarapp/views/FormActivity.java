@@ -1,6 +1,7 @@
 package com.ralba.infocarapp.views;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -38,9 +41,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.Normalizer;
@@ -57,7 +64,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
     private ConstraintLayout constraintLayoutFormActivity;
 
-    private String id;
+    private CarEntity carUpdated;
 
     private EditText brandET;
     private TextInputLayout brandTIL;
@@ -78,6 +85,10 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
     private ImageView formImage;
 
+    private Switch reprogrammable;
+
+    private String id;
+
     private Context myContext;
     private ArrayAdapter<String> adapter;
     private Calendar calendar;
@@ -92,6 +103,9 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
         presenter = new FormPresenter(this);
 
+        car = new CarEntity();
+        carUpdated = new CarEntity();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         if(toolbar!=null){
             setSupportActionBar(toolbar);
@@ -105,6 +119,8 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                 }
             });
         }
+
+        reprogrammable=findViewById(R.id.reprogrammable);
 
         formImage = findViewById(R.id.form_image);
 
@@ -126,13 +142,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
 
-        ArrayList<String> items=new ArrayList<>();
-        items.add(getResources().getString(R.string.motor_type));
-        items.add(getResources().getString(R.string.add_motor_type));
-        items.add(getResources().getString(R.string.gasoline));
-        items.add(getResources().getString(R.string.diesel));
-        items.add(getResources().getString(R.string.electric));
-        items.add(getResources().getString(R.string.hybrid));
+        ArrayList<String> items=presenter.getMotorTypes();
 
         adapter=new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, items);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -145,6 +155,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position>1){
                     Toast.makeText(spinner.getContext(), getResources().getString(R.string.have_selected)+" "+spinner.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+                    car.setMotorType(spinner.getSelectedItem().toString());
                 }else if(position==1){
                     LayoutInflater layoutActivity = LayoutInflater.from(myContext);
                     View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog, null);
@@ -183,23 +194,11 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
 
-        Button saveButton = findViewById(R.id.save_button);
-        saveButton.setOnClickListener(new View.OnClickListener(){
+        reprogrammable.setOnFocusChangeListener(new View.OnFocusChangeListener(){
             @Override
-            public void onClick(View v) {
-                presenter.onClickSaveCar();
+            public void onFocusChange(View v, boolean hasFocus) {
             }
         });
-
-        Button deleteButton = findViewById(R.id.delete_button);
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteCar();
-            }
-        });
-
-        car=new CarEntity();
 
         brandET=findViewById(R.id.car_brandET);
         brandTIL=findViewById(R.id.car_brandTIL);
@@ -304,10 +303,72 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
 
-        id=getIntent().getStringExtra("id");
+        Button saveButton = findViewById(R.id.save_button);
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(car.setBrand(brandET.getText().toString()) &&
+                        car.setModel(modelET.getText().toString()) &&
+                        car.setHP(hpET.getText().toString()) &&
+                        car.setDescription(descriptionET.getText().toString()) &&
+                        spinner.getSelectedItemPosition()>1 &&
+                        car.setLaunchDate(launchDateET.getText().toString())){
+                        car.setReprogrammable(reprogrammable.isChecked());
+
+                        if(formImage.getDrawable()==null){
+                            car.setImage("");
+                        }else{
+                            ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+                            ((BitmapDrawable)formImage.getDrawable()).getBitmap().compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                            byte[] array=byteArrayOutputStream.toByteArray();
+                            String image = Base64.encodeToString(array, Base64.DEFAULT);
+                            car.setImage(image);
+                        }
+                        presenter.onClickSaveCar(car);
+                }
+            }
+        });
+
+        Button deleteButton = findViewById(R.id.delete_button);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteCar();
+            }
+        });
+
+        id = getIntent().getStringExtra("id");
 
         if(id!=null){
-            brandET.setText(id);
+            carUpdated.setId(id);
+            carUpdated.setBrand(getIntent().getStringExtra("brand"));
+            carUpdated.setModel(getIntent().getStringExtra("model"));
+            carUpdated.setDescription(getIntent().getStringExtra("description"));
+            carUpdated.setMotorType(getIntent().getStringExtra("motorType"));
+            carUpdated.setHP(getIntent().getStringExtra("hp"));
+            carUpdated.setLaunchDate(getIntent().getStringExtra("launchDate"));
+            carUpdated.setImage(getIntent().getStringExtra("image"));
+            carUpdated.setReprogrammable(getIntent().getBooleanExtra("reprogrammable", false));
+
+            if(carUpdated.getId()!=null){
+                brandET.setText(carUpdated.getBrand());
+                modelET.setText(carUpdated.getModel());
+                hpET.setText(carUpdated.getHP());
+                descriptionET.setText(carUpdated.getDescription());
+                //launchDateET.setText(carUpdated.getLaunchDate().toString());
+                byte[] decodedString= Base64.decode(carUpdated.getImage(), Base64.DEFAULT);
+                Bitmap decodedByte= BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                formImage.setImageBitmap(decodedByte);
+                int n=0;
+                for(String s:items){
+                    if(s.equals(carUpdated.getMotorType())){
+                        spinner.setSelection(n);
+                    }
+                    n++;
+                }
+            }
+        }else{
+            deleteButton.setEnabled(false);
         }
 
     }
@@ -367,7 +428,13 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         formImage.setBackground(getDrawable(R.drawable.ic_lands));
     }
 
-    private void deleteCar(){
+    @Override
+    public void saveCar() {
+        finish();
+    }
+
+    @Override
+    public void deleteCar(){
         AlertDialog.Builder builder=new AlertDialog.Builder(FormActivity.this);
         builder.setTitle(getResources().getString(R.string.delete_car));
         builder.setMessage(getResources().getString(R.string.ask_deletion));
@@ -375,7 +442,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         builder.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                presenter.onClickDelete();
+                presenter.onClickDelete(id);
             }
         });
 

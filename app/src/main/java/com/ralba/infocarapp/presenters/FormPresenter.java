@@ -13,25 +13,39 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.snackbar.Snackbar;
 import com.ralba.infocarapp.R;
 import com.ralba.infocarapp.interfaces.FormInterface;
+import com.ralba.infocarapp.models.CarEntity;
+import com.ralba.infocarapp.models.CarModel;
 import com.ralba.infocarapp.views.FormActivity;
 import com.ralba.infocarapp.views.MyApplication;
+
+import java.util.ArrayList;
 
 public class FormPresenter implements FormInterface.Presenter {
 
     private FormInterface.View view;
+    private CarModel model;
 
     public FormPresenter(FormInterface.View view){
         this.view=view;
+        this.model = new CarModel();
     }
 
     @Override
-    public void onClickSaveCar() {
-        view.closeFormActivity();
+    public void onClickSaveCar(CarEntity car) {
+        if(car.getId()!=""){
+            this.model.updateCar(car);
+            view.saveCar();
+        }else if(this.model.insertCar(car)){
+            view.saveCar();
+        }else{
+            System.out.println("ERROR");
+        }
     }
 
     @Override
-    public void onClickDelete() {
-        view.closeFormActivity();
+    public void onClickDelete(String id) {
+        this.model.deleteCarById(id);
+        view.deleteCar();
     }
 
     @Override
@@ -83,6 +97,16 @@ public class FormPresenter implements FormInterface.Presenter {
     @Override
     public void onClickClean() {
         view.cleanImage();
+    }
+
+    @Override
+    public ArrayList<String> getMotorTypes() {
+        return model.getAllMotorTypes();
+    }
+
+    @Override
+    public CarEntity getCarById(String id) {
+        return model.getCarById(id);
     }
 
 }
