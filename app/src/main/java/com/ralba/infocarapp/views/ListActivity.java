@@ -13,6 +13,7 @@ import com.ralba.infocarapp.models.CarModel;
 import com.ralba.infocarapp.presenters.ListPresenter;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -24,10 +25,11 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.Toast;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity implements ListInterface.View {
@@ -267,6 +269,31 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_CANCELED){
+            System.out.println("Back");
+        }else{
+            if(!data.getExtras().getString("brand").equals("")){
+                brand = data.getExtras().getString("brand");
+            }
+
+            if(!data.getExtras().getString("launchDate").equals("")){
+                SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    date = d.parse(data.getExtras().getString("launchDate"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(data.getExtras().getLong("motorType")!=0){
+                ArrayList<String> items = presenter.getMotorTypes();
+                motorType = items.get((int)data.getExtras().getLong("motorType"));
+            }
+        }
     }
 
     @Override
