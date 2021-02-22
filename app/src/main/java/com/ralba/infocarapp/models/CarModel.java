@@ -5,7 +5,6 @@ import com.ralba.infocarapp.views.MyApplication;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
@@ -23,12 +22,11 @@ public class CarModel {
         ArrayList<CarEntity> carList=new ArrayList<>();
         carList.addAll(realm.copyFromRealm(result));
 
-        realm.close();
-
         ArrayList<CarEntity> carListSummarize=new ArrayList<>();
 
         for(CarEntity car : carList){
             CarEntity aux = new CarEntity();
+            aux.setId(car.getId());
             aux.setBrand(car.getBrand());
             aux.setModel(car.getModel());
             aux.setImage(car.getImage());
@@ -71,7 +69,7 @@ public class CarModel {
     }
 
     public CarEntity getCarById(String id){
-        CarEntity car = null;
+        CarEntity car = new CarEntity();
         Realm realm=Realm.getDefaultInstance();
 
         car=realm.where(CarEntity.class).equalTo("id", id).findFirst();

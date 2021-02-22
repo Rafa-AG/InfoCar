@@ -1,5 +1,7 @@
 package com.ralba.infocarapp.presenters;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ralba.infocarapp.interfaces.ListInterface;
 import com.ralba.infocarapp.models.CarEntity;
 import com.ralba.infocarapp.models.CarModel;
@@ -33,8 +35,14 @@ public class ListPresenter implements ListInterface.Presenter{
     }
 
     @Override
-    public void onClickRecyclerViewItem(CarEntity car) {
-        view.startFormActivity(car);
+    public void onClickRecyclerViewItem(String id) {
+        view.startFormActivity(id);
+    }
+
+    @Override
+    public void removeCar(RecyclerView.ViewHolder viewHolder, String id) {
+        model.deleteCarById(id);
+        view.onSwipeRemove(viewHolder);
     }
 
     @Override

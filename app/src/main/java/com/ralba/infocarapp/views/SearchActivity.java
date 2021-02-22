@@ -116,7 +116,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
             }
         });
 
-        Button searchButton = findViewById(R.id.clean_button);
+        Button searchButton = findViewById(R.id.search_button);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

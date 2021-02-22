@@ -211,7 +211,7 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
             @Override
             public void onClick(View v) {
                 int pos = recyclerView.getChildAdapterPosition(v);
-                presenter.onClickRecyclerViewItem(items.get(pos));
+                presenter.onClickRecyclerViewItem(items.get(pos).getId());
             }
         });
 
@@ -227,14 +227,7 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                int position = viewHolder.getAdapterPosition();
-                if(items.remove(position)!=null){
-                    Toast.makeText(ListActivity.this, getResources().getString(R.string.corrected_delete), Toast.LENGTH_SHORT).show();
-                    System.out.println(position);
-                    adapter.notifyDataSetChanged();
-                }else{
-                    Toast.makeText(ListActivity.this, getResources().getString(R.string.deleted_failed), Toast.LENGTH_SHORT).show();
-                }
+                presenter.removeCar(viewHolder, items.get(viewHolder.getAdapterPosition()).getId());
             }
         });
         helper.attachToRecyclerView(recyclerView);
@@ -311,24 +304,28 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
     @Override
     public void startSearchActivity() {
         Intent intent=new Intent(getApplicationContext(), SearchActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    @Override
+    public void startFormActivity(String id) {
+        Intent intent=new Intent(getApplicationContext(), FormActivity.class);
+
+        intent.putExtra("id", id);
+
         startActivity(intent);
     }
 
     @Override
-    public void startFormActivity(CarEntity car) {
-        Intent intent=new Intent(getApplicationContext(), FormActivity.class);
-
-        intent.putExtra("id", car.getId());
-        intent.putExtra("brand", car.getBrand());
-        intent.putExtra("model", car.getModel());
-        intent.putExtra("description", car.getDescription());
-        intent.putExtra("hp", car.getHP());
-        intent.putExtra("launchDate", car.getLaunchDate());
-        intent.putExtra("image", car.getImage());
-        intent.putExtra("motorType", car.getMotorType());
-        intent.putExtra("reprogrammable", car.isReprogrammable());
-
-        startActivity(intent);
+    public void onSwipeRemove(RecyclerView.ViewHolder viewHolder){
+        int position = viewHolder.getAdapterPosition();
+        if(items.remove(position)!=null){
+            Toast.makeText(ListActivity.this, getResources().getString(R.string.corrected_delete), Toast.LENGTH_SHORT).show();
+            System.out.println(position);
+            adapter.notifyDataSetChanged();
+        }else{
+            Toast.makeText(ListActivity.this, getResources().getString(R.string.deleted_failed), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean firstTime() {

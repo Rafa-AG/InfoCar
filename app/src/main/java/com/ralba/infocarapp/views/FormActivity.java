@@ -1,7 +1,6 @@
 package com.ralba.infocarapp.views;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -12,7 +11,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -27,10 +25,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -39,21 +35,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class FormActivity extends AppCompatActivity implements FormInterface.View {
 
@@ -63,8 +54,6 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     private static final int REQUEST_SELECT_IMAGE = 201;
 
     private ConstraintLayout constraintLayoutFormActivity;
-
-    private CarEntity carUpdated;
 
     private EditText brandET;
     private TextInputLayout brandTIL;
@@ -104,7 +93,6 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         presenter = new FormPresenter(this);
 
         car = new CarEntity();
-        carUpdated = new CarEntity();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         if(toolbar!=null){
@@ -133,7 +121,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
 
-        Button cleanButton=findViewById(R.id.clean_button);
+        Button cleanButton=findViewById(R.id.search_button);
 
         cleanButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -324,6 +312,9 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                             String image = Base64.encodeToString(array, Base64.DEFAULT);
                             car.setImage(image);
                         }
+                        if(car.getId()==null){
+                            car.setId("1");
+                        }
                         presenter.onClickSaveCar(car);
                 }
             }
@@ -340,33 +331,30 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         id = getIntent().getStringExtra("id");
 
         if(id!=null){
-            carUpdated.setId(id);
-            carUpdated.setBrand(getIntent().getStringExtra("brand"));
-            carUpdated.setModel(getIntent().getStringExtra("model"));
-            carUpdated.setDescription(getIntent().getStringExtra("description"));
-            carUpdated.setMotorType(getIntent().getStringExtra("motorType"));
-            carUpdated.setHP(getIntent().getStringExtra("hp"));
-            carUpdated.setLaunchDate(getIntent().getStringExtra("launchDate"));
-            carUpdated.setImage(getIntent().getStringExtra("image"));
-            carUpdated.setReprogrammable(getIntent().getBooleanExtra("reprogrammable", false));
+            CarEntity newCar = presenter.getCarById(id);
+            System.out.println(newCar.getBrand());
+            brandET.setText(newCar.getBrand());
+            modelET.setText(newCar.getModel());
+            hpET.setText(newCar.getHP());
+            descriptionET.setText(newCar.getDescription());
+            launchDateET.setText(newCar.getLaunchDate().toString());
+            reprogrammable.setChecked(newCar.isReprogrammable());
 
-            if(carUpdated.getId()!=null){
-                brandET.setText(carUpdated.getBrand());
-                modelET.setText(carUpdated.getModel());
-                hpET.setText(carUpdated.getHP());
-                descriptionET.setText(carUpdated.getDescription());
-                //launchDateET.setText(carUpdated.getLaunchDate().toString());
-                byte[] decodedString= Base64.decode(carUpdated.getImage(), Base64.DEFAULT);
-                Bitmap decodedByte= BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                formImage.setImageBitmap(decodedByte);
-                int n=0;
-                for(String s:items){
-                    if(s.equals(carUpdated.getMotorType())){
-                        spinner.setSelection(n);
-                    }
-                    n++;
+            int n = 0;
+            for(String mt:items){
+                if(mt.equals(newCar.getMotorType())){
+                    spinner.setSelection(n);
                 }
+                n++;
             }
+
+            if(!newCar.getImage().equals("")){
+                formImage.setBackground(null);
+                byte[] decodedString=Base64.decode(newCar.getImage(), Base64.DEFAULT);
+                Bitmap decodedByte=BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                formImage.setImageBitmap(decodedByte);
+            }
+
         }else{
             deleteButton.setEnabled(false);
         }
