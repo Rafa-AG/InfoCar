@@ -67,7 +67,7 @@ public class CarTest {
         assertEquals(true, this.car.setLaunchDate("15/05/2005"));
         assertEquals(false, this.car.setLaunchDate("21/13/2021"));
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
-        assertEquals("12/02/2015", date.format(this.car.getLaunchDate()));
+        assertEquals("15/05/2005", date.format(this.car.getLaunchDate()));
     }
 
     @Test
