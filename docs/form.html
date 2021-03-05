@@ -8,11 +8,191 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>InfoCar</title>
 </head>
 
 <body>
-    
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FF7300;">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="color: white;">Formulario</a>
+        </div>
+    </nav>
+    <h4 class="text-center mt-4">Añadir</h4>
+    <div class="row m-0 justify-content-center">
+        <div class="col-11 col-lg-5 col-md-5 mt-4 p-2">
+            <p>
+                En las siguientes imágenes se puede ver el formulario para añadir un nuevo coche, este consta de los
+                siguientes apartados:
+            </p>
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                aria-controls="collapseOne">
+                                Imagen
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            La imagen es un atributo opcional, pinchando en ella te llevará a la galería y podrás
+                            seleccionar una imagen. También se puede observar un botón justo debajo de la imagen, este
+                            sirve para eliminar dicha imagen.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-controls="collapseTwo">
+                                Marca
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            La marca debe de tener al menos la primera letra mayúscula y no contener números.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="true" aria-controls="collapseThree">
+                                Modelo
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+                        data-parent="#accordion">
+                        <div class="card-body">
+                            El modelo puede tener números, letras, símbolos, etc.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour"
+                                aria-expanded="true" aria-controls="collapseFour">
+                                Caballos de Vapor
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion">
+                        <div class="card-body">
+                            Los CV deben de contener exclusivamente números.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFive">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive"
+                                aria-expanded="true" aria-controls="collapseFive">
+                                Descripción
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#accordion">
+                        <div class="card-body">
+                            La descripción puede contener números, letras, símbolos, etc.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingSix">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSix"
+                                aria-expanded="true" aria-controls="collapseSix">
+                                Tipo de Motor
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseSix" class="collapse show" aria-labelledby="headingSix" data-parent="#accordion">
+                        <div class="card-body">
+                            El tipo de motor es un campo obligatorio. Se pueden añadir nuevas opciones.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingSeven">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSeven"
+                                aria-expanded="true" aria-controls="collapseSeven">
+                                Fecha de Lanzamiento
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven"
+                        data-parent="#accordion">
+                        <div class="card-body">
+                            La fecha debe coincidir con dd/MM/yyyy
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingEight">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseEight"
+                                aria-expanded="true" aria-controls="collapseEight">
+                                Reprogramable
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseEight" class="collapse show" aria-labelledby="headingEight"
+                        data-parent="#accordion">
+                        <div class="card-body">
+                            Indica si el coche es reprogramable o no.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-11 col-lg-5 col-md-5 mt-4 p-2">
+            <img src="img/add.jpg" class="col-10 col-lg-5 col-md-5 p-0" style="border: solid 1px;">
+            <img src="img/add2.jpg" class="col-10 col-lg-5 col-md-5 p-0" style="border: solid 1px;">
+        </div>
+    </div>
+    <hr>
+    <h4 class="text-center mt-4">Editar</h4>
+    <div class="row m-0 justify-content-center">
+        <div class="col-11 col-lg-5 col-md-5 mt-4 p-2">
+            <p>
+                Si pulsamos en un coche en la actividad listado, nos llevará a esta pantalla. Los campos de los atributos 
+                se autocompletarán con los datos del coche seleccionado. Si se desea cambiar algún dato solo se tendrá que 
+                sobreescribir un campo y pulsar en el botón de guardar.
+            </p>
+        </div>
+        <div class="col-11 col-lg-5 col-md-5 mt-4 p-2">
+            <img src="img/edit.jpg" class="col-10 col-lg-5 col-md-5 p-0" style="border: solid 1px;">
+            <img src="img/edit2.jpg" class="col-10 col-lg-5 col-md-5 p-0" style="border: solid 1px;">
+        </div>
+    </div>
+    <hr>
+    <h4 class="text-center mt-4">Eliminar</h4>
+    <div class="row m-0 justify-content-center">
+        <div class="col-11 col-lg-5 col-md-5 mt-4 p-2">
+            <p>
+                Si deseamos eliminar el coche seleccionado, como se ha mencionado anteriormente, solo tendremos que pulsar en el botón de eliminar, 
+                nos preguntarán si es lo que deseamos (tal y como se muestra en la imagen) y le damos a "Sí".
+            </p>
+        </div>
+        <div class="col-11 col-lg-5 col-md-5 mt-4 p-2">
+            <img src="img/delete.jpg" class="col-10 col-lg-5 col-md-5 p-0" style="border: solid 1px;">
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
