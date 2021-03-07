@@ -27,8 +27,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -446,6 +448,15 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     }
 
     @Override
+    public void startHelpActivity() {
+        Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+
+        intent.putExtra("wv", "form");
+
+        startActivity(intent);
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
@@ -472,6 +483,21 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                 }
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == R.id.action_help_form) {
+            presenter.onClickHelp();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

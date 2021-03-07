@@ -18,6 +18,7 @@ public interface FormInterface {
         void cleanImage();
         void saveCar();
         void deleteCar();
+        void startHelpActivity();
     }
 
     public interface Presenter{
@@ -28,6 +29,7 @@ public interface FormInterface {
         void permissionGranted();
         void permissionDenied();
         void onClickClean();
+        void onClickHelp();
         ArrayList<String> getMotorTypes();
         CarEntity getCarById(String id);
     }

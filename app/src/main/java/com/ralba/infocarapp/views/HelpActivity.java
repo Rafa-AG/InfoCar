@@ -45,13 +45,7 @@ public class HelpActivity extends AppCompatActivity {
 
         if(networkInfo!=null && networkInfo.isConnected()){
             if(!wv.equals("")){
-                if(wv.equals("list")){
-                    helpWebView.loadUrl("https://rafa-ag.github.io/InfoCar/list");
-                }else if(wv.equals("form")){
-                    helpWebView.loadUrl("https://rafa-ag.github.io/InfoCar/form");
-                }else if(wv.equals("search")){
-                    helpWebView.loadUrl("https://rafa-ag.github.io/InfoCar/search");
-                }
+                helpWebView.loadUrl("https://rafa-ag.github.io/InfoCar/"+wv);
             }else{
                 finish();
             }

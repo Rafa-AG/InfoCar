@@ -255,6 +255,12 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
             return true;
         }
 
+        if(id == R.id.action_help){
+            Log.d(TAG, "Menu Help click");
+            presenter.onClickHelp();
+            return true;
+        }
+
         if(id==R.id.about_us){
             Log.d(TAG, "Menu About Us click");
             presenter.onClickAboutUs();
@@ -312,6 +318,15 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
         Intent intent=new Intent(getApplicationContext(), FormActivity.class);
 
         intent.putExtra("id", id);
+
+        startActivity(intent);
+    }
+
+    @Override
+    public void startHelpActivity() {
+        Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+
+        intent.putExtra("wv", "list");
 
         startActivity(intent);
     }

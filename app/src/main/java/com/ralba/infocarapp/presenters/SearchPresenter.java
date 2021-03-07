@@ -24,6 +24,11 @@ public class SearchPresenter implements SearchInterface.Presenter{
     }
 
     @Override
+    public void onClickHelp() {
+        view.startHelpActivity();
+    }
+
+    @Override
     public ArrayList<String> getMotorTypes() {
         return model.getAllMotorTypes();
     }

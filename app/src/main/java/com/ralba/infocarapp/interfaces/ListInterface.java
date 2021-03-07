@@ -14,6 +14,7 @@ public interface ListInterface {
         void startAboutActivity();
         void startSearchActivity();
         void startFormActivity(String id);
+        void startHelpActivity();
         void onSwipeRemove(RecyclerView.ViewHolder viewHolder);
     }
 
@@ -21,6 +22,7 @@ public interface ListInterface {
         void onClickAddCar();
         void onClickAboutUs();
         void onClickSearch();
+        void onClickHelp();
         void onClickRecyclerViewItem(String id);
         void removeCar(RecyclerView.ViewHolder viewHolder, String id);
         ArrayList<CarEntity> getAllItemsSummarize();
