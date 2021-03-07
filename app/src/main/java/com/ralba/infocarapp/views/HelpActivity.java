@@ -26,6 +26,7 @@ public class HelpActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(R.string.help);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
