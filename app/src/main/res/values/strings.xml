@@ -71,4 +71,6 @@
     <string name="write_permission_accepted">Write permission accepted</string>
     <string name="write_permission_not_accepted">Write permission denied</string>
     <string name="choose_picture">Choose a picture</string>
+    <string name="title_activity_help" translatable="false">HelpActivity</string>
+    <string name="no_internet">There are no internet connection</string>
 </resources>
