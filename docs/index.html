@@ -6,31 +6,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="img/logo.png">
 
     <title>InfoCar</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FF7300;">
-        <div class="container-fluid">
-            <a class="navbar-brand" style="color: white;">InfoCar</a>
-        </div>
-    </nav>
-    <div class="list-group list-group-flush">
-        <a href="list.html" class="list-group-item list-group-item-action">Listado</a>
-        <a href="form.html" class="list-group-item list-group-item-action">Formulario</a>
-        <a href="search.html" class="list-group-item list-group-item-action">Buscar</a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FF7300;">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="color: white;">InfoCar</a>
     </div>
+</nav>
+<div class="row justify-content-center" style="width: 100%;">
+    <div class="col-lg-6 col-md-6 col-12 pl-5">
+        <h4 class="text-center mt-4">Descripción</h4>
+        <hr>
+        <p>
+            Aplicación desarrollada para la asignatura de CFGS DAM, Desarrollo de Interfaces. CRUD
+            básico de almacenamiento de coches.
+        </p>
+        <h4 class="text-center mt-4">Requisitos</h4>
+        <hr>
+        <p>
+            Android 5 o superiores.
+        </p>
+        <h4 class="text-center mt-4">Instalación</h4>
+        <hr>
+        <ul class="list-group">
+            <li class="list-group-item">Descargar la aplicación: <a href="https://github.com/Rafa-AG/InfoCar/releases/tag/1.0">aquí</a></li>
+            <li class="list-group-item">Instalar esta en su dispositivo móvil</li>
+            <li class="list-group-item">La aplicación ya está lista para ser utilizada</li>
+        </ul>
+        <h4 class="text-center mt-4">Desarrollo</h4>
+        <hr>
+        <p>
+            La aplicación se ha desarrollado con:
+        </p>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                aria-controls="collapseOne">
+                            Entorno de desarrollo
+                        </button>
+                    </h5>
+                </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        Android Studio.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-controls="collapseTwo">
+                            Lenguaje
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        Java.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="text-center mt-4">Ayuda</h4>
+        <hr>
+        <div class="list-group">
+            <a href="list.html" class="list-group-item list-group-item-action">Listado</a>
+            <a href="form.html" class="list-group-item list-group-item-action">Formulario</a>
+            <a href="search.html" class="list-group-item list-group-item-action">Buscar</a>
+        </div>
+        <h4 class="text-center mt-4">Autor</h4>
+        <hr>
+        <p>
+            Rafael Alba González, <a href="https://www.linkedin.com/in/rafael-alba-gonzález-6735a0205/">LinkedIn</a>
+        </p>
+        <div class="d-flex justify-content-center mt-5">
+            <img src="img/logo.png">
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
