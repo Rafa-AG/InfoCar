@@ -5,7 +5,7 @@ _Aplicación desarrollada para la asignatura de CFGS DAM, Desarrollo de Interfac
 Android 5 o superiores
 
 ## Instalación 🔧
- - Descargar la aplicación: [aquí](https://github.com/Ciscu24/RealMeme/releases/tag/1.0).
+ - Descargar la aplicación: [aquí](https://github.com/Rafa-AG/InfoCar/releases/tag/1.0).
  - Instalar esta en su dispositivo móvil.
  - La aplicación ya está lista para ser utilizada.
  
